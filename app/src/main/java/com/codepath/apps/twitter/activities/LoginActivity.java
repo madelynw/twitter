@@ -3,6 +3,7 @@ package com.codepath.apps.twitter.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.codepath.apps.twitter.R;
@@ -19,7 +20,6 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 		setContentView(R.layout.activity_login);
 	}
 
-
 	// Inflate the menu; this adds items to the action bar if it is present.
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -27,7 +27,12 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 		return true;
 	}
 
-	// OAuth authenticated successfully, launch primary authenticated activity
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    // OAuth authenticated successfully, launch primary authenticated activity
 	// i.e Display application "homepage"
 	@Override
 	public void onLoginSuccess() {
