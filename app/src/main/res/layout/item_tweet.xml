@@ -23,9 +23,10 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ivProfileImage"
         android:layout_toEndOf="@+id/ivProfileImage"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="1dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="15sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,10 +36,11 @@
         android:textColor="@color/woodsmoke"
         android:layout_toRightOf="@+id/ivProfileImage"
         android:layout_toEndOf="@+id/ivProfileImage"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:textColorLink="@color/picton_blue"
         android:layout_below="@+id/tvName"
-        android:lineSpacingExtra="2dp"/>
+        android:lineSpacingExtra="5dp"
+        android:textSize="15sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,7 +53,8 @@
         android:layout_toEndOf="@+id/tvName"
         android:layout_below="@id/toolbar"
         android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp" />
+        android:layout_marginStart="5dp"
+        android:textSize="15sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -64,6 +67,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="7dp"/>
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"/>
 
 </RelativeLayout>

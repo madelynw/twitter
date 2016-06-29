@@ -66,7 +66,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         ivProfileImage.setImageResource(android.R.color.transparent); // clear out the old image for a recycled view
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl())
                 .transform(new RoundedCornersTransformation(25,25))
-                .resize(260, 0)
+                .resize(270, 0)
                 .into(ivProfileImage);
 
         // 5. Return the view to be inserted into the list

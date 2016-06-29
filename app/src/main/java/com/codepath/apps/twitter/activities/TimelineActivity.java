@@ -82,8 +82,8 @@ public class TimelineActivity extends AppCompatActivity {
 
     // Return the order of the fragments in the view pager
     public class TweetsPagerAdapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider {
-        private String tabTitles[] = { "Home", "Mentions" };
-        private int tabIcons[] = {R.drawable.ic_profile, R.drawable.ic_launcher};
+        private String tabTitles[] = { "Home", "Mentions", "Notifications", "Messages" };
+        private int tabIcons[] = {R.drawable.ic_home, R.drawable.ic_lightning, R.drawable.ic_bell, R.drawable.ic_message};
 
         // Adapter gets the manager to insert or remove fragment from activity
         public TweetsPagerAdapter(FragmentManager fm) {
@@ -97,6 +97,12 @@ public class TimelineActivity extends AppCompatActivity {
                 return new HomeTimelineFragment();
             }
             else if (position == 1) {
+                return new MentionsTimelineFragment();
+            }
+            else if (position == 2) {
+                return new HomeTimelineFragment();
+            }
+            else if (position == 3) {
                 return new MentionsTimelineFragment();
             }
             else {
