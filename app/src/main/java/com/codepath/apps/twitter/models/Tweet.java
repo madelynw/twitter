@@ -1,6 +1,8 @@
 package com.codepath.apps.twitter.models;
 
 import android.text.format.DateUtils;
+import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,6 +43,7 @@ public class Tweet {
 
     public String getLongAgo() {
         String time = getRelativeTimeAgo(getCreatedAt());
+        Log.d("DEBUG", time);
         return time.substring(0, 3);
     }
 
