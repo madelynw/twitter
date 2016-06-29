@@ -1,6 +1,8 @@
 package com.codepath.apps.twitter.adapters;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import com.codepath.apps.twitter.models.Tweet;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Locale;
 
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
@@ -38,6 +41,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_tweet, parent, false);
         }
+
         // 3. Find the subviews to fill with data in the template
         ImageView ivProfileImage = (ImageView) convertView.findViewById(R.id.ivProfileImage);
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
@@ -51,12 +55,20 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         tvUsername.setText("@" + tweet.getUser().getScreenName());
         tvLongAgo.setText(tweet.getLongAgo());
 
+        Typeface helvetica_light = Typeface.createFromAsset(getContext().getAssets(), "fonts/HelveticaLight.ttf");
+        Typeface helvetica_bold = Typeface.createFromAsset(getContext().getAssets(), "fonts/HelveticaBold.otf");
+        tvName.setTypeface(helvetica_bold);
+        tvBody.setTypeface(helvetica_light);
+        tvUsername.setTypeface(helvetica_light);
+        tvLongAgo.setTypeface(helvetica_light);
+
         //ivProfileImage.setImageResource(0);
         ivProfileImage.setImageResource(android.R.color.transparent); // clear out the old image for a recycled view
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl())
                 .transform(new RoundedCornersTransformation(25,25))
-                .fit()
+                .resize(150, 0)
                 .into(ivProfileImage);
+
         // 5. Return the view to be inserted into the list
         return convertView;
     }

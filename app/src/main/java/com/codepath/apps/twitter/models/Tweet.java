@@ -39,7 +39,10 @@ public class Tweet {
         return createdAt;
     }
 
-    public String getLongAgo() { return getRelativeTimeAgo(getCreatedAt()); }
+    public String getLongAgo() {
+        String time = getRelativeTimeAgo(getCreatedAt());
+        return time.substring(0, 3);
+    }
 
     // Deserialize the json and build tweet objects
     // Tweet.fromJSON("{...}") -> <Tweet>
@@ -52,7 +55,6 @@ public class Tweet {
             tweet.uid = jsonObject.getLong("id");
             tweet.createdAt = jsonObject.getString("created_at");
             tweet.user = User.fromJSON(jsonObject.getJSONObject("user"));
-            //tweet.longAgo = tweet.getLongAgo();
         } catch (JSONException e) {
             e.printStackTrace();
         }

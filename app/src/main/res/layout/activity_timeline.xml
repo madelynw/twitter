@@ -6,21 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.TimelineActivity">
 
-    <!--
-    <fragment
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:name="com.codepath.apps.twitter.fragments.MentionsTimelineFragment"
-        android:id="@+id/fragment_timeline"
-        tools:layout="@layout/fragment_tweets_list"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-        -->
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:minHeight="?attr/actionBarSize"

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="picton_blue">#50ABF1</color>
+    <color name="woodsmoke">#292F33</color>
+    <color name="mischka">#CCD6DD</color>
+    <color name="blue_bayoux">#667580</color>
+    <color name="mystic">#E1E8ED</color>
+    <color name="white">#ffffff</color>
+</resources>
