@@ -20,13 +20,16 @@
         <!-- actionMenuTextColor is the color of the text of action (menu) items  -->
         <item name="actionMenuTextColor">@color/picton_blue</item>
         <!-- Tints the input fields like checkboxes and text fields -->
-        <item name="colorAccent">@color/white</item>
+        <item name="colorAccent">@color/picton_blue</item>
         <!-- Applies to views in their normal state. -->
-        <item name="colorControlNormal">@color/picton_blue</item>
+        <item name="colorControlNormal">@color/blue_bayoux</item>
         <!-- Applies to views in their activated state (i.e checked or switches) -->
         <item name="colorControlActivated">@color/mischka</item>
         <!-- Applied to framework control highlights (i.e ripples or list selectors) -->
         <item name="colorControlHighlight">@color/mischka</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">top|start</item>
+        <item name="android:textSize">18sp</item>
 
         <!-- Enable these below if you want clicking icons to trigger a ripple effect -->
 
@@ -35,11 +38,12 @@
 
     </style>
 
-    <!-- This configures the styles for the title within the Toolbar  -->
+    <!--
+    This configures the styles for the title within the Toolbar
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">18sp</item>
-        <!--<item name="android:textStyle">bold</item>-->
+        <item name="android:textStyle">bold</item>
     </style>
-
+    -->
 
 </resources>

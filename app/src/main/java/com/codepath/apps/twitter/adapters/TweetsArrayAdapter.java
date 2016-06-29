@@ -55,12 +55,13 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         tvUsername.setText("@" + tweet.getUser().getScreenName());
         tvLongAgo.setText(tweet.getLongAgo());
 
-        Typeface helvetica_light = Typeface.createFromAsset(getContext().getAssets(), "fonts/HelveticaLight.ttf");
-        Typeface helvetica_bold = Typeface.createFromAsset(getContext().getAssets(), "fonts/HelveticaBold.otf");
-        tvName.setTypeface(helvetica_bold);
-        tvBody.setTypeface(helvetica_light);
-        tvUsername.setTypeface(helvetica_light);
-        tvLongAgo.setTypeface(helvetica_light);
+        Typeface gotham_light = Typeface.createFromAsset(getContext().getAssets(), "fonts/GothamNarrow-Light.otf");
+        Typeface gotham_bold = Typeface.createFromAsset(getContext().getAssets(), "fonts/GothamNarrow-Medium.otf");
+
+        tvName.setTypeface(gotham_bold);
+        tvBody.setTypeface(gotham_light);
+        tvUsername.setTypeface(gotham_light);
+        tvLongAgo.setTypeface(gotham_light);
 
         //ivProfileImage.setImageResource(0);
         ivProfileImage.setImageResource(android.R.color.transparent); // clear out the old image for a recycled view
