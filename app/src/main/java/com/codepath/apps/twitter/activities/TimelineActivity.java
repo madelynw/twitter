@@ -11,7 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.codepath.apps.twitter.R;
@@ -74,9 +76,14 @@ public class TimelineActivity extends AppCompatActivity {
 
     }
 
+    public void composeMessage(View view) {
+        Toast.makeText(this, "!!", Toast.LENGTH_SHORT).show();
+    }
+
     // Return the order of the fragments in the view pager
-    public class TweetsPagerAdapter extends FragmentPagerAdapter {
+    public class TweetsPagerAdapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider {
         private String tabTitles[] = { "Home", "Mentions" };
+        private int tabIcons[] = {R.drawable.ic_profile, R.drawable.ic_launcher};
 
         // Adapter gets the manager to insert or remove fragment from activity
         public TweetsPagerAdapter(FragmentManager fm) {
@@ -107,6 +114,11 @@ public class TimelineActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             return tabTitles.length;
+        }
+
+        @Override
+        public int getPageIconResId(int position) {
+            return tabIcons[position];
         }
     }
 }

@@ -24,7 +24,11 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/toolbar"
-        android:background="@color/white" />
+        android:background="@color/white"
+        app:pstsIndicatorColor="@color/picton_blue"
+        app:pstsIndicatorHeight="6dp"
+        app:pstsUnderlineColor="@color/white"
+        app:pstsDividerColor="@color/white"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
@@ -34,5 +38,43 @@
         android:layout_below="@id/tabs"
         android:scrollbars="vertical"
         android:fadeScrollbars="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/ic_compose_message"
+        android:layout_margin="16dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/mischka"
+        app:backgroundTint="@color/picton_blue"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="composeMessage"/>
+
+    <!--
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_compose_message"
+            app:layout_anchorGravity="bottom|right|end"
+            app:fabSize="normal"
+            app:rippleColor="@color/mischka"
+            app:backgroundTint="@color/picton_blue"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    -->
 
 </RelativeLayout>

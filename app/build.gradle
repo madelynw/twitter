@@ -8,6 +8,7 @@ android {
         applicationId "com.codepath.apps.restclienttemplate"
         minSdkVersion 16
         targetSdkVersion 23
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -16,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+}
+
+ext {
+    supportLibVersion = '23.1.0'  // variable that can be referenced to keep support libs consistent
 }
 
 repositories {
@@ -44,6 +49,10 @@ dependencies {
     // If you want to use the GPU Filters
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 
-    compile 'com.android.support:recyclerview-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
+
+    //compile 'com.android.tools.build:gradle:2.1.0'
+
+    //compile 'com.android.support:support-vector-drawable:23.1.0' // VectorDrawableCompat
+    //compile 'com.android.support:animated-vector-drawable:23.1.0' // AnimatedVectorDrawableCompat
 }
