@@ -1,7 +1,12 @@
 package com.codepath.apps.twitter.models;
 
+import android.text.format.DateUtils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * Created by madelynw on 6/27/16.

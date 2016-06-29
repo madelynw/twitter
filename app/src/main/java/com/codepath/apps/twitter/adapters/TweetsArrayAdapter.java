@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+
 /**
  * Created by madelynw on 6/27/16.
  */
@@ -38,15 +40,22 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         }
         // 3. Find the subviews to fill with data in the template
         ImageView ivProfileImage = (ImageView) convertView.findViewById(R.id.ivProfileImage);
-        TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
+        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
         TextView tvBody = (TextView) convertView.findViewById(R.id.tvBody);
+        TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
+        TextView tvLongAgo = (TextView) convertView.findViewById(R.id.tvLongAgo);
+
         // 4. Populate data into the subviews
-        tvUsername.setText(tweet.getUser().getScreenName());
+        tvName.setText(tweet.getUser().getName());
         tvBody.setText(tweet.getBody());
+        tvUsername.setText("@" + tweet.getUser().getScreenName());
+        tvLongAgo.setText(tweet.getLongAgo());
 
         //ivProfileImage.setImageResource(0);
         ivProfileImage.setImageResource(android.R.color.transparent); // clear out the old image for a recycled view
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl())
+                .transform(new RoundedCornersTransformation(25,25))
+                .fit()
                 .into(ivProfileImage);
         // 5. Return the view to be inserted into the list
         return convertView;

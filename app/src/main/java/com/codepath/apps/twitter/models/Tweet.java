@@ -1,10 +1,15 @@
 package com.codepath.apps.twitter.models;
 
+import android.text.format.DateUtils;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by madelynw on 6/27/16.
@@ -16,6 +21,7 @@ public class Tweet {
     private long uid; // unique id for the tweet
     private User user; // store embedded user object
     private String createdAt;
+    private String longAgo;
 
     public User getUser() {
         return user;
@@ -33,6 +39,8 @@ public class Tweet {
         return createdAt;
     }
 
+    public String getLongAgo() { return getRelativeTimeAgo(getCreatedAt()); }
+
     // Deserialize the json and build tweet objects
     // Tweet.fromJSON("{...}") -> <Tweet>
     public static Tweet fromJSON(JSONObject jsonObject) {
@@ -44,6 +52,7 @@ public class Tweet {
             tweet.uid = jsonObject.getLong("id");
             tweet.createdAt = jsonObject.getString("created_at");
             tweet.user = User.fromJSON(jsonObject.getJSONObject("user"));
+            //tweet.longAgo = tweet.getLongAgo();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -69,5 +78,23 @@ public class Tweet {
 
         // Return the finished list
         return tweets;
+    }
+
+    // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
+    public String getRelativeTimeAgo(String rawJsonDate) {
+        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
+        sf.setLenient(true);
+
+        String relativeDate = "";
+        try {
+            long dateMillis = sf.parse(rawJsonDate).getTime();
+            relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
+                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return relativeDate;
     }
 }

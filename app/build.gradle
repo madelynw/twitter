@@ -35,5 +35,12 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
     // ActiveAndroid for simple persistence with an ORM
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+
+    //Sliding tab strip
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+
+    // Picasso Transformations
+    compile 'jp.wasabeef:picasso-transformations:2.1.0'
+    // If you want to use the GPU Filters
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 }
