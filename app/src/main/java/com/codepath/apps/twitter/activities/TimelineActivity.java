@@ -44,6 +44,8 @@ public class TimelineActivity extends AppCompatActivity {
 
     private final int REQUEST_CODE = 20;
 
+    ViewPager vpPager;
+
     private SmartFragmentStatePagerAdapter adapterViewPager;
 
     @Override
@@ -52,7 +54,7 @@ public class TimelineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_timeline);
 
         // Get the viewpager
-        ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
+        vpPager = (ViewPager) findViewById(R.id.viewpager);
         // Set the viewpager adapter for the pager
         adapterViewPager = new TweetsPagerAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
@@ -107,6 +109,7 @@ public class TimelineActivity extends AppCompatActivity {
             HomeTimelineFragment fragmentHomeTweets =
                     (HomeTimelineFragment) adapterViewPager.getRegisteredFragment(0);
             fragmentHomeTweets.appendTweet(tweet);
+            vpPager.setCurrentItem(0);
         }
     }
 
