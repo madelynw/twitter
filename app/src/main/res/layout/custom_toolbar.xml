@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/btnProfile"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@color/white"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_profile"
+        android:paddingRight="15dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="4dp"
+        android:paddingLeft="4dp"
+        android:paddingTop="1dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvToolbarTitle"
+        tools:text="Home"
+        android:layout_toRightOf="@id/btnProfile"
+        android:paddingTop="6dp"
+        android:textSize="18sp"
+        android:textColor="@color/woodsmoke"/>
+</RelativeLayout>

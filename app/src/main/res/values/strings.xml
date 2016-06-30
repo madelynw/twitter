@@ -5,5 +5,6 @@
     <string name="title_activity_timeline">Home</string>
     <string name="login_label">Connect to Twitter</string>
     <string name="profile">Profile</string>
+    <string name="whats_happening">What\'s happening?</string>
 
 </resources>

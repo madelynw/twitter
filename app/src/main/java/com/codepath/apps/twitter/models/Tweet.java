@@ -1,5 +1,7 @@
 package com.codepath.apps.twitter.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,7 +20,7 @@ import java.util.Locale;
  */
 
 // Parse the json and store the data, encapsulate state logic or display logic
-public class Tweet {
+public class Tweet implements Parcelable {
     private String body;
     private long uid; // unique id for the tweet
     private User user; // store embedded user object
@@ -102,4 +104,41 @@ public class Tweet {
 
         return relativeDate;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.body);
+        dest.writeLong(this.uid);
+        dest.writeParcelable(this.user, flags);
+        dest.writeString(this.createdAt);
+        dest.writeString(this.longAgo);
+    }
+
+    public Tweet() {
+    }
+
+    protected Tweet(Parcel in) {
+        this.body = in.readString();
+        this.uid = in.readLong();
+        this.user = in.readParcelable(User.class.getClassLoader());
+        this.createdAt = in.readString();
+        this.longAgo = in.readString();
+    }
+
+    public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {
+        @Override
+        public Tweet createFromParcel(Parcel source) {
+            return new Tweet(source);
+        }
+
+        @Override
+        public Tweet[] newArray(int size) {
+            return new Tweet[size];
+        }
+    };
 }

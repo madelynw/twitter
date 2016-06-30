@@ -28,7 +28,7 @@
         <!-- Applied to framework control highlights (i.e ripples or list selectors) -->
         <item name="colorControlHighlight">@color/mischka</item>
         <item name="android:background">@color/white</item>
-        <item name="android:gravity">top|start</item>
+        <item name="android:gravity">center|left</item>
         <item name="android:textSize">18sp</item>
 
         <!-- Enable these below if you want clicking icons to trigger a ripple effect -->
