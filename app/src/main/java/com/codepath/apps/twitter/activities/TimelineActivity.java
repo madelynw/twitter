@@ -65,9 +65,27 @@ public class TimelineActivity extends AppCompatActivity {
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
 
-        /**
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle(null);
+
+        // Use custom toolbar
+        View mToolbar = getLayoutInflater().inflate(R.layout.custom_toolbar, null);
+        getSupportActionBar().setCustomView(mToolbar);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        // Set toolbar title and custom font
+        TextView tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarTitle);
+        Typeface gotham_bold = Typeface.createFromAsset(getAssets(), "fonts/GothamNarrow-Medium.otf");
+        tvToolbarTitle.setTypeface(gotham_bold);
+        tvToolbarTitle.setText(R.string.title_activity_timeline);
+
+
+        ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
+
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,23 +94,6 @@ public class TimelineActivity extends AppCompatActivity {
             }
         });
 
-         */
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
-        setSupportActionBar(toolbar);
-
-        /**
-        getSupportActionBar().setTitle(null);
-
-        View mToolbar = getLayoutInflater().inflate(R.layout.custom_toolbar, null);
-        getSupportActionBar().setCustomView(mToolbar);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-
-        TextView tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarTitle);
-        Typeface gotham_bold = Typeface.createFromAsset(getAssets(), "fonts/GothamNarrow-Medium.otf");
-        tvToolbarTitle.setTypeface(gotham_bold);
-        tvToolbarTitle.setText(R.string.title_activity_timeline);
-         */
     }
 
     public void composeMessage(View view) {
@@ -119,8 +120,8 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getLayoutInflater().inflate(R.layout.menu_timeline, null);
-        getMenuInflater().inflate(R.menu.menu_timeline, menu);
+        getLayoutInflater().inflate(R.layout.custom_toolbar, null);
+        //getMenuInflater().inflate(R.menu.menu_timeline, menu);
         return true;
     }
 
@@ -134,14 +135,6 @@ public class TimelineActivity extends AppCompatActivity {
         startActivity(i);
 
     }
-
-    /**
-    public void onProfileView(ImageButton btnProfile) {
-        Intent i = new Intent(this, ProfileActivity.class);
-        startActivity(i);
-    }
-     */
-
 
     // Return the order of the fragments in the view pager
     public class TweetsPagerAdapter extends SmartFragmentStatePagerAdapter implements PagerSlidingTabStrip.IconTabProvider {
