@@ -6,6 +6,8 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.codepath.apps.twitter.TimeFormatter;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,9 +46,8 @@ public class Tweet implements Parcelable {
     }
 
     public String getLongAgo() {
-        String time = getRelativeTimeAgo(getCreatedAt());
-        Log.d("DEBUG", time);
-        return time.substring(0, 3);
+        String formattedTime = TimeFormatter.getTimeDifference(getCreatedAt());
+        return formattedTime;
     }
 
     // Deserialize the json and build tweet objects

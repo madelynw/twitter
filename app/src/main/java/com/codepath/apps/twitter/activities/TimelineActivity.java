@@ -65,7 +65,7 @@ public class TimelineActivity extends AppCompatActivity {
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
+        ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
 
         /**
         btnProfile.setOnClickListener(new View.OnClickListener() {
@@ -103,8 +103,6 @@ public class TimelineActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             // Extract name value from result extras
             Tweet tweet = data.getParcelableExtra("tweet");
-            // Toast the name to display temporarily on screen
-            //Toast.makeText(this, tweet.getBody(), Toast.LENGTH_SHORT).show();
 
             HomeTimelineFragment fragmentHomeTweets =
                     (HomeTimelineFragment) adapterViewPager.getRegisteredFragment(0);
@@ -128,10 +126,15 @@ public class TimelineActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onProfileView(MenuItem item) {
+    public void onProfileView2(MenuItem item) {
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
 
+    }
+
+    public void onProfileView(ImageButton btnProfile) {
+        Intent i = new Intent(this, ProfileActivity.class);
+        startActivity(i);
     }
 
 
