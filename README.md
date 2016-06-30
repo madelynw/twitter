@@ -17,9 +17,9 @@ The following **required** functionality is completed:
   * [x] User can then enter a new tweet from a second activity and then post this to twitter
 * [x] User can navigate to **view their own profile**
   * [x] User can see picture, tagline, # of followers, # of following, and tweets on their profile.
-* [ ] User can **click on the profile image** in any tweet to see **another user's** profile.
- * [ ] User can see picture, tagline, # of followers, # of following, and tweets of clicked user.
- * [ ] Profile view includes that user's timeline of recent tweets
+* [x] User can **click on the profile image** in any tweet to see **another user's** profile.
+ * [x] User can see picture, tagline, # of followers, # of following, and tweets of clicked user.
+ * [x] Profile view includes that user's timeline of recent tweets
 
 The following **optional** features are implemented:
 
