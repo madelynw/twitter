@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.twitter.R;
 import com.codepath.apps.twitter.TwitterApplication;
@@ -36,32 +37,58 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Get the account info
-        client.getUserInfo(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                user = User.fromJSON(response);
-                // My current user's account info
-                getSupportActionBar().setTitle("@" + user.getScreenName());
-                //Log.d("DEBUG", response.toString());
-                populateProfileHeader(user);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Log.d("DEBUG", errorResponse.toString());
-            }
-        });
-
         // Get the screen name from the activity
         String screenName = getIntent().getStringExtra("screen_name");
+
+        //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
         if (savedInstanceState == null) {
-            // Create the user timeline fragment
+            loadUserInfo(screenName);
+
             UserTimelineFragment fragmentUserTimeline = UserTimelineFragment.newInstance(screenName);
             // Display the user fragment within the activity dynamically
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flContainer, fragmentUserTimeline);
             ft.commit();
+        }
+    }
+
+    public void loadUserInfo(String screenName) {
+        if (screenName != null && !screenName.isEmpty()) {
+            // Trigger call to "users/show" endpoint
+            // to load user profile data
+            // populate the top of the profile view
+            // Create the user timeline fragment
+
+            client.getUserInfo(screenName, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    user = User.fromJSON(response);
+                    populateProfileHeader(user);
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                    Log.d("DEBUG", errorResponse.toString());
+                }
+            });
+
+        } else {
+            // no screenName was passed
+            // Trigger call to "account/verifyCredentials" endpoint
+            // to load current user profile data
+            // populate the top of the profile view
+            client.getMyInfo(new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    user = User.fromJSON(response);
+                    populateProfileHeader(user);
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                    Log.d("DEBUG", errorResponse.toString());
+                }
+            });
         }
     }
 

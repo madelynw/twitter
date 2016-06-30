@@ -1,6 +1,7 @@
 package com.codepath.apps.twitter.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.apps.twitter.R;
+import com.codepath.apps.twitter.activities.ProfileActivity;
 import com.codepath.apps.twitter.models.Tweet;
 import com.squareup.picasso.Picasso;
 
@@ -48,6 +50,18 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         TextView tvBody = (TextView) convertView.findViewById(R.id.tvBody);
         TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
         TextView tvLongAgo = (TextView) convertView.findViewById(R.id.tvLongAgo);
+
+        final String screenName = tweet.getUser().getScreenName();
+        ivProfileImage.setTag(screenName);
+        ivProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), ProfileActivity.class);
+                i.putExtra("screen_name", screenName);
+                getContext().startActivity(i);
+
+            }
+        });
 
         // 4. Populate data into the subviews
         tvName.setText(tweet.getUser().getName());
