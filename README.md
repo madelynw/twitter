@@ -12,9 +12,9 @@ The following **required** functionality is completed:
 * [x] User can **switch between Timeline and Mention views using tabs**
   * [x] User is displayed the username, name, and body for each tweet
   * [x] User is displayed the [relative timestamp](https://gist.github.com/nesquena/f786232f5ef72f6e10a7) for each tweet "8m", "7h"
-* [ ] User can **compose and post a new tweet**
-  * [ ] User can click a "Compose" icon in the Action Bar on the top right
-  * [ ] User can then enter a new tweet from a second activity and then post this to twitter
+* [x] User can **compose and post a new tweet**
+  * [x] User can click a "Compose" icon in the Action Bar on the top right
+  * [x] User can then enter a new tweet from a second activity and then post this to twitter
 * [x] User can navigate to **view their own profile**
   * [x] User can see picture, tagline, # of followers, # of following, and tweets on their profile.
 * [ ] User can **click on the profile image** in any tweet to see **another user's** profile.
@@ -27,7 +27,7 @@ The following **optional** features are implemented:
 * [ ] User can **pull down to refresh tweets** in either timeline
 * [ ] User can **search for tweets matching a particular query** and see results
 * [ ] User can see embedded image media within the tweet detail view.
-* [ ] Improve the user interface and theme the app to feel twitter branded with colors and styles
+* [x] Improve the user interface and theme the app to feel twitter branded with colors and styles
 * [ ] When a network request is sent, user sees an [indeterminate progress indicator](http://guides.codepath.com/android/Handling-ProgressBars#progress-within-actionbar)
 * [ ] User can **"reply" to any tweet on their home timeline**
   * [ ] The user that wrote the original tweet is automatically "@" replied in compose
@@ -36,7 +36,7 @@ The following **optional** features are implemented:
 * [ ] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in an offline mode.
 * [ ] Compose activity is replaced with a modal overlay
 * [ ] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
-* [ ] Used Parcelable instead of Serializable leveraging the popular [Parceler library](http://guides.codepath.com/android/Using-Parceler) when passing data between activities.
+* [x] Used Parcelable instead of Serializable leveraging the popular [Parceler library](http://guides.codepath.com/android/Using-Parceler) when passing data between activities.
 * [ ] Replaced all icon drawables and other static image assets with [vector drawables](http://guides.codepath.com/android/Drawables#vector-drawables) where appropriate.
 * [ ] User can view following / followers list through the profile of a user
 * [ ] Apply the popular Butterknife annotation library to reduce view boilerplate.
