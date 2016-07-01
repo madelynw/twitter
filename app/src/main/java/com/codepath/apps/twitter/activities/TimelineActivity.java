@@ -102,7 +102,7 @@ public class TimelineActivity extends AppCompatActivity {
                 user = User.fromJSON(response);
                 String imgUrl = user.getProfileImageUrl();
                 Picasso.with(getApplicationContext()).load(imgUrl)
-                        .transform(new RoundedCornersTransformation(30, 30))
+                        .transform(new RoundedCornersTransformation(20, 20))
                         //.fit().centerCrop()
                         .resize(160, 0)
                         .into(btnProfile);
@@ -118,6 +118,7 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(TimelineActivity.this, ProfileActivity.class);
+                i.putExtra("profile_url", user.getProfileImageUrl());
                 startActivity(i);
             }
         });

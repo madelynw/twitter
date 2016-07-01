@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/picton_blue"/>
+    <corners android:radius="4dp"/>
+    <stroke android:color="@color/picton_blue"
+        android:width="2dp"/>
+    <padding android:right="8dp"
+        android:top="8dp"
+        android:bottom="8dp"
+        android:left="8dp"/>
+
+</shape>

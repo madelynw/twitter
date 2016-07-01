@@ -38,6 +38,24 @@
 
     </style>
 
+    <style name="counterText">
+        <item name="android:textColor">#667580</item>
+    </style>
+
+    <style name="counterOverride">
+        <item name="android:textColor">#ff0000</item>
+    </style>
+
+    <style name="textInputCustom">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="colorControlActivated">#FFFFFF</item>
+        <item name="colorControlHighlight">#FFFFFF</item>
+        <item name="android:textColorHint">@color/blue_bayoux</item>
+        <item name="android:textColor">@color/woodsmoke</item>
+        <item name="android:background">@color/white</item>
+        <!--<item name="android.support.design:hintEnabled">false</item>-->
+    </style>
+
     <!--
     This configures the styles for the title within the Toolbar
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
