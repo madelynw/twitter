@@ -3,24 +3,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activities.LoginActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:titleTextColor="@android:color/white"
-        android:background="?attr/colorPrimary">
-    </android.support.v7.widget.Toolbar>
+    tools:context=".activities.LoginActivity"
+    android:background="@drawable/gradient_background">
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
         android:onClick="loginToRest"
         android:text="@string/login_label"
-        android:layout_below="@id/toolbar"/>
+        android:textColor="@color/picton_blue"
+        android:background="@drawable/custom_button_connect"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:id="@+id/btnConnect"
+        android:layout_below="@+id/tvTagline"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_twitter"
+        android:id="@+id/tvWelcome"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:textSize="22sp"
+        android:layout_marginTop="320dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_get_updates"
+        android:id="@+id/tvTagline"
+        android:textColor="@color/white"
+        android:layout_marginBottom="55dp"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/tvWelcome"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:id="@+id/ivBird"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

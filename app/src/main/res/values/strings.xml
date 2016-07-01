@@ -8,5 +8,10 @@
     <string name="whats_happening">What\'s happening?</string>
     <string name="followers">" FOLLOWERS"</string>
     <string name="following">" FOLLOWING"</string>
+    <string name="mentions">Mentions</string>
+    <string name="notifications">Notifications</string>
+    <string name="messages">Messages</string>
+    <string name="welcome_twitter">Welcome to Twitter.</string>
+    <string name="welcome_get_updates">Get real-time updates about what matters to you.</string>
 
 </resources>

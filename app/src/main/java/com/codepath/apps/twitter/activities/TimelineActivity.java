@@ -56,6 +56,8 @@ public class TimelineActivity extends AppCompatActivity {
     TwitterClient client;
     User user;
 
+    TextView tvToolbarTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,10 +88,10 @@ public class TimelineActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         // Set toolbar title and custom font
-        TextView tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarTitle);
+        tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarTitle);
         Typeface gotham_bold = Typeface.createFromAsset(getAssets(), "fonts/GothamNarrow-Medium.otf");
         tvToolbarTitle.setTypeface(gotham_bold);
-        tvToolbarTitle.setText(R.string.title_activity_timeline);
+        //tvToolbarTitle.setText(R.string.title_activity_timeline);
 
 
         final ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
@@ -104,7 +106,7 @@ public class TimelineActivity extends AppCompatActivity {
                 Picasso.with(getApplicationContext()).load(imgUrl)
                         .transform(new RoundedCornersTransformation(20, 20))
                         //.fit().centerCrop()
-                        .resize(160, 0)
+                        .resize(130, 0)
                         .into(btnProfile);
             }
 
@@ -201,15 +203,19 @@ public class TimelineActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
+                tvToolbarTitle.setText(R.string.title_activity_timeline);
                 return new HomeTimelineFragment();
             }
             else if (position == 1) {
+                tvToolbarTitle.setText(R.string.mentions);
                 return new MentionsTimelineFragment();
             }
             else if (position == 2) {
+                tvToolbarTitle.setText(R.string.notifications);
                 return new HomeTimelineFragment();
             }
             else if (position == 3) {
+                tvToolbarTitle.setText(R.string.messages);
                 return new MentionsTimelineFragment();
             }
             else {

@@ -1,10 +1,14 @@
 package com.codepath.apps.twitter.activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.codepath.apps.twitter.R;
 import com.codepath.apps.twitter.TwitterClient;
@@ -18,8 +22,23 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+
+        TextView tvWelcome = (TextView) findViewById(R.id.tvWelcome);
+        TextView tvTagline = (TextView) findViewById(R.id.tvTagline);
+        Button btnConnect = (Button) findViewById(R.id.btnConnect);
+        ImageView ivBird = (ImageView) findViewById(R.id.ivBird);
+
+        Typeface gotham_light = Typeface.createFromAsset(getAssets(), "fonts/GothamNarrow-Light.otf");
+        Typeface gotham_bold = Typeface.createFromAsset(getAssets(), "fonts/GothamNarrow-Medium.otf");
+
+        tvWelcome.setTypeface(gotham_light);
+        tvTagline.setTypeface(gotham_light);
+        btnConnect.setTypeface(gotham_bold);
+
+        ivBird.setImageResource(R.drawable.ic_twitter_bird);
 	}
 
+	/**
 	// Inflate the menu; this adds items to the action bar if it is present.
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -31,6 +50,7 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+	*/
 
     // OAuth authenticated successfully, launch primary authenticated activity
 	// i.e Display application "homepage"
