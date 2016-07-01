@@ -91,7 +91,7 @@ public class TimelineActivity extends AppCompatActivity {
         tvToolbarTitle = (TextView) findViewById(R.id.tvToolbarTitle);
         Typeface gotham_bold = Typeface.createFromAsset(getAssets(), "fonts/GothamNarrow-Medium.otf");
         tvToolbarTitle.setTypeface(gotham_bold);
-        //tvToolbarTitle.setText(R.string.title_activity_timeline);
+        tvToolbarTitle.setText(R.string.title_activity_timeline);
 
 
         final ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
@@ -203,19 +203,23 @@ public class TimelineActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
-                tvToolbarTitle.setText(R.string.title_activity_timeline);
+                //tvToolbarTitle.setText(tabTitles[0]);
+                //tvToolbarTitle.setText(R.string.title_activity_timeline);
                 return new HomeTimelineFragment();
             }
             else if (position == 1) {
-                tvToolbarTitle.setText(R.string.mentions);
+                //tvToolbarTitle.setText(tabTitles[1]);
+                //tvToolbarTitle.setText(R.string.mentions);
                 return new MentionsTimelineFragment();
             }
             else if (position == 2) {
-                tvToolbarTitle.setText(R.string.notifications);
+                //tvToolbarTitle.setText(tabTitles[2]);
+                //tvToolbarTitle.setText(R.string.notifications);
                 return new HomeTimelineFragment();
             }
             else if (position == 3) {
-                tvToolbarTitle.setText(R.string.messages);
+                //tvToolbarTitle.setText(tabTitles[3]);
+                //tvToolbarTitle.setText(R.string.messages);
                 return new MentionsTimelineFragment();
             }
             else {

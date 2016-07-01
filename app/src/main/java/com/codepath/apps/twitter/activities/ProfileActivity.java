@@ -37,8 +37,8 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         client = TwitterApplication.getRestClient();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         // Get the screen name from the activity
         String screenName = getIntent().getStringExtra("screen_name");
@@ -67,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     user = User.fromJSON(response);
                     populateProfileHeader(user);
-                    getSupportActionBar().setTitle("@" + user.getScreenName());
+                    //getSupportActionBar().setTitle("@" + user.getScreenName());
                 }
 
                 @Override
@@ -86,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     user = User.fromJSON(response);
                     populateProfileHeader(user);
-                    getSupportActionBar().setTitle("@" + user.getScreenName());
+                    //getSupportActionBar().setTitle("@" + user.getScreenName());
                 }
 
                 @Override
@@ -140,6 +140,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .into(ivBackgroundImage);
     }
 
+    /**
     // Menu icons are inflated just as they were with actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -152,4 +153,5 @@ public class ProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+    */
 }

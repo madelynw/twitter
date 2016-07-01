@@ -1,9 +1,11 @@
 package com.codepath.apps.twitter.fragments;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.codepath.apps.twitter.R;
 import com.codepath.apps.twitter.TwitterApplication;
