@@ -66,7 +66,8 @@ public class User implements Parcelable {
             u.followersCount = json.getInt("followers_count");
             u.friendsCount = json.getInt("friends_count");
             u.tagline = json.getString("description");
-            u.backgroundImageUrl = json.getString("profile_background_image_url");
+            //u.backgroundImageUrl = json.getString("profile_background_image_url");
+            u.backgroundImageUrl = json.getString("profile_banner_url");
         } catch (JSONException e) {
             e.printStackTrace();
         }

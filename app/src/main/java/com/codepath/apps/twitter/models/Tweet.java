@@ -28,6 +28,17 @@ public class Tweet implements Parcelable {
     private User user; // store embedded user object
     private String createdAt;
     private String longAgo;
+    private String mediaUrl;
+    private String favoritesCount;
+    private String retweetsCount;
+
+    public String getFavoritesCount() {
+        return favoritesCount;
+    }
+
+    public String getRetweetsCount() {
+        return retweetsCount;
+    }
 
     public User getUser() {
         return user;
@@ -50,6 +61,10 @@ public class Tweet implements Parcelable {
         return formattedTime;
     }
 
+    public String getMediaUrl() {
+        return mediaUrl;
+    }
+
     // Deserialize the json and build tweet objects
     // Tweet.fromJSON("{...}") -> <Tweet>
     public static Tweet fromJSON(JSONObject jsonObject) {
@@ -61,6 +76,13 @@ public class Tweet implements Parcelable {
             tweet.uid = jsonObject.getLong("id");
             tweet.createdAt = jsonObject.getString("created_at");
             tweet.user = User.fromJSON(jsonObject.getJSONObject("user"));
+            tweet.favoritesCount = jsonObject.getString("favorite_count");
+            tweet.retweetsCount = jsonObject.getString("retweet_count");
+
+            JSONObject entities = jsonObject.getJSONObject("entities");
+            if (entities.length() > 0) {
+                tweet.mediaUrl = entities.getJSONArray("media").getJSONObject(0).getString("media_url");
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -106,6 +128,9 @@ public class Tweet implements Parcelable {
         return relativeDate;
     }
 
+    public Tweet() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -118,9 +143,9 @@ public class Tweet implements Parcelable {
         dest.writeParcelable(this.user, flags);
         dest.writeString(this.createdAt);
         dest.writeString(this.longAgo);
-    }
-
-    public Tweet() {
+        dest.writeString(this.mediaUrl);
+        dest.writeString(this.favoritesCount);
+        dest.writeString(this.retweetsCount);
     }
 
     protected Tweet(Parcel in) {
@@ -129,6 +154,9 @@ public class Tweet implements Parcelable {
         this.user = in.readParcelable(User.class.getClassLoader());
         this.createdAt = in.readString();
         this.longAgo = in.readString();
+        this.mediaUrl = in.readString();
+        this.favoritesCount = in.readString();
+        this.retweetsCount = in.readString();
     }
 
     public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {

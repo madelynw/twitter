@@ -22,17 +22,17 @@
         app:counterOverflowTextAppearance="@style/counterOverride"
         style="@style/textInputCustom">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:hint="@string/whats_happening"
-        android:id="@+id/etTweet"
-        android:gravity="top|start"
-        android:layout_below="@+id/ivExit"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:ems="140"
-        android:textSize="15sp"/>
+         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:hint="@string/whats_happening"
+            android:id="@+id/etTweet"
+            android:gravity="top|start"
+            android:layout_below="@+id/ivExit"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:ems="140"
+            android:textSize="15sp"/>
 
     </android.support.design.widget.TextInputLayout>
 

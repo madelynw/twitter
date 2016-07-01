@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -62,6 +63,7 @@ public class TweetsListFragment extends Fragment {
         tweets = new ArrayList<>();
         // Construct the adapter from data source
         adapter = new TweetsArrayAdapter(getActivity(), tweets);
+
 
         /**
         client = TwitterApplication.getRestClient();

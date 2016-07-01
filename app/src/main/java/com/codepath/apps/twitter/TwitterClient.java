@@ -87,7 +87,7 @@ public class TwitterClient extends OAuthBaseClient {
     }
 
     public void searchTweets(String q, AsyncHttpResponseHandler handler) {
-        String apiUrl = getApiUrl("search/tweets.json?q=query");
+        String apiUrl = getApiUrl("search/tweets.json");
         RequestParams params = new RequestParams();
         params.put("q", q);
         params.put("count", 25);
