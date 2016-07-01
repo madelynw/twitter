@@ -52,7 +52,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         TextView tvLongAgo = (TextView) convertView.findViewById(R.id.tvLongAgo);
         ImageView ivReply = (ImageView) convertView.findViewById(R.id.ivReply);
         ImageView ivRetweet = (ImageView) convertView.findViewById(R.id.ivRetweet);
-        ImageView ivFavorite = (ImageView) convertView.findViewById(R.id.ivFavorite);
+        final ImageView ivFavorite = (ImageView) convertView.findViewById(R.id.ivFavorite);
         ImageView ivMessage = (ImageView) convertView.findViewById(R.id.ivMessage);
         TextView tvNumberRetweets = (TextView) convertView.findViewById(R.id.tvNumberRetweets);
         TextView tvNumberFavorites = (TextView) convertView.findViewById(R.id.tvNumberFavorites);
@@ -71,6 +71,13 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
                 i.putExtra("screen_name", screenName);
                 getContext().startActivity(i);
 
+            }
+        });
+
+        ivFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ivFavorite.setImageResource(R.drawable.ic_red_favorite);
             }
         });
 
@@ -104,7 +111,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
                 .into(ivProfileImage);
 
 
-        if (tweet.getMediaUrl() != null) {
+        if (tweet.getMediaUrl() != "null") {
             ImageView ivMedia = (ImageView) convertView.findViewById(R.id.ivMedia);
 
             ivMedia.setImageResource(android.R.color.transparent);
