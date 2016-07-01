@@ -87,8 +87,8 @@
         android:layout_height="24dp"
         android:id="@+id/ivReply"
         android:layout_below="@+id/ivMedia"
-        android:layout_alignLeft="@+id/ivMedia"
-        android:layout_alignStart="@+id/ivMedia"
+        android:layout_alignLeft="@+id/tvBody"
+        android:layout_alignStart="@+id/tvBody"
         tools:background="@color/blue_bayoux"
         android:paddingBottom="2dp"/>
 

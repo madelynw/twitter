@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.codepath.apps.twitter.R;
 import com.codepath.apps.twitter.activities.ProfileActivity;
 import com.codepath.apps.twitter.models.Tweet;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -56,6 +58,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
         ImageView ivMessage = (ImageView) convertView.findViewById(R.id.ivMessage);
         TextView tvNumberRetweets = (TextView) convertView.findViewById(R.id.tvNumberRetweets);
         TextView tvNumberFavorites = (TextView) convertView.findViewById(R.id.tvNumberFavorites);
+        ImageView ivMedia = (ImageView) convertView.findViewById(R.id.ivMedia);
 
         ivReply.setImageResource(R.drawable.ic_reply);
         ivRetweet.setImageResource(R.drawable.ic_retweet);
@@ -74,6 +77,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
             }
         });
 
+        Long id = tweet.getUid();
         ivFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,13 +115,13 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
                 .into(ivProfileImage);
 
 
-        if (tweet.getMediaUrl() != "null") {
-            ImageView ivMedia = (ImageView) convertView.findViewById(R.id.ivMedia);
-
+        if (tweet.getMediaUrl() != null) {
             ivMedia.setImageResource(android.R.color.transparent);
             Picasso.with(getContext()).load(tweet.getMediaUrl())
                     .fit().centerCrop()
                     .into(ivMedia);
+        } else {
+            ivMedia.setVisibility(View.GONE);
         }
 
         // 5. Return the view to be inserted into the list
