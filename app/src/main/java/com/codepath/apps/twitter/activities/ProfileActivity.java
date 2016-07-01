@@ -1,6 +1,7 @@
 package com.codepath.apps.twitter.activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -100,16 +102,42 @@ public class ProfileActivity extends AppCompatActivity {
         TextView tvBody = (TextView) findViewById(R.id.tvBody);
         TextView tvFollowers = (TextView) findViewById(R.id.tvFollowers);
         TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);
+        TextView tvNumberFollowers = (TextView) findViewById(R.id.tvNumberFollowers);
+        TextView tvNumberFollowing = (TextView) findViewById(R.id.tvNumberFollowing);
+        TextView tvUsername = (TextView) findViewById(R.id.tvUsername);
         ImageView ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
+        ImageView ivBackgroundImage = (ImageView) findViewById(R.id.ivBackgroundImage);
 
         tvName.setText(user.getName());
         tvBody.setText(user.getTagline());
-        tvFollowers.setText(user.getFollowersCount() + " Followers");
-        tvFollowing.setText(user.getFriendsCount() + " Following");
+        tvFollowers.setText(R.string.followers);
+        tvFollowing.setText(R.string.following);
+        tvUsername.setText("@" + user.getScreenName());
+        tvNumberFollowers.setText(String.valueOf(user.getFollowersCount()));
+        tvNumberFollowing.setText(String.valueOf(user.getFriendsCount()));
+
+        Typeface gotham_light = Typeface.createFromAsset(getAssets(), "fonts/GothamNarrow-Light.otf");
+        Typeface gotham_bold = Typeface.createFromAsset(getAssets(), "fonts/GothamNarrow-Medium.otf");
+
+        tvName.setTypeface(gotham_bold);
+        tvBody.setTypeface(gotham_light);
+        tvUsername.setTypeface(gotham_light);
+        tvFollowers.setTypeface(gotham_light);
+        tvFollowing.setTypeface(gotham_light);
+        tvNumberFollowers.setTypeface(gotham_bold);
+        tvNumberFollowing.setTypeface(gotham_bold);
 
         ivProfileImage.setImageResource(android.R.color.transparent); // clear out the old image for a recycled view
         Picasso.with(this).load(user.getProfileImageUrl())
+                //.resize(100, 0)
+                .fit().centerCrop()
+                .transform(new RoundedCornersTransformation(25, 25))
                 .into(ivProfileImage);
+
+        ivBackgroundImage.setImageResource(android.R.color.transparent);
+        Picasso.with(this).load(user.getBackgroundImageUrl())
+                .fit().centerCrop()
+                .into(ivBackgroundImage);
     }
 
     // Menu icons are inflated just as they were with actionbar

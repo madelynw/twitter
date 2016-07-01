@@ -17,87 +17,197 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/rlUserHeader"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/toolbar"
+        android:background="@color/white">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:id="@+id/ivBackgroundImage"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/ivProfileImage"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:padding="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="5dp"
             android:layout_marginEnd="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Billy"
             android:id="@+id/tvName"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/ivProfileImage"
-            android:layout_toEndOf="@+id/ivProfileImage" />
+            android:layout_below="@+id/ivProfileImage"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/woodsmoke"
+            tools:text="Maddie"
+            android:textSize="18sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="New Text"
             android:id="@+id/tvBody"
+            tools:text="Photographer and dog lover :)"
+            android:layout_below="@+id/tvUsername"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/woodsmoke"
+            android:textSize="16sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="\@maddieihw"
+            android:id="@+id/tvUsername"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:textColor="@color/mischka"
             android:layout_below="@+id/tvName"
-            android:layout_toRightOf="@+id/ivProfileImage"
-            android:layout_toEndOf="@+id/ivProfileImage"
-            android:layout_alignBottom="@+id/ivProfileImage" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/tvNumberFollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="5"
+            android:textColor="@color/woodsmoke"
+            android:layout_below="@+id/tvBody"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:id="@+id/tvFollowing"
+            android:layout_width="wrap_content"
+            android:textColor="@color/mischka"
+            android:layout_height="wrap_content"
+            tools:text="FOLLOWING"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:layout_below="@+id/tvBody"
+            android:layout_toRightOf="@+id/tvNumberFollowing"
+            android:layout_toEndOf="@+id/tvNumberFollowing" />
+
+        <TextView
+            android:id="@+id/tvNumberFollowers"
+            android:layout_width="wrap_content"
+            android:textColor="@color/woodsmoke"
+            android:layout_height="wrap_content"
+            tools:text="5"
+            android:layout_below="@+id/tvBody"
+            android:layout_toRightOf="@+id/tvFollowing"
+            android:layout_toEndOf="@+id/tvFollowing"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:id="@+id/tvFollowers"
+            android:layout_width="wrap_content"
+            android:textColor="@color/mischka"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            tools:text="FOLLOWERS"
+            android:layout_marginTop="2dp"
+            android:layout_below="@+id/tvBody"
+            android:layout_toRightOf="@+id/tvNumberFollowers"
+            android:layout_toEndOf="@+id/tvNumberFollowers" />
 
     </RelativeLayout>
 
+
+    <!--
     <LinearLayout
         android:id="@+id/llCounts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/rlUserHeader"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:background="@color/white">
 
         <TextView
-            android:id="@+id/tvFollowers"
+            android:id="@+id/tvNumberFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="5 followers"
-            android:layout_marginRight="5dp"
-            android:layout_marginEnd="5dp"
+            tools:text="5"
+            android:textColor="@color/woodsmoke"
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"/>
 
         <TextView
             android:id="@+id/tvFollowing"
             android:layout_width="wrap_content"
+            android:textColor="@color/mischka"
             android:layout_height="wrap_content"
-            tools:text="5 Following"
-            android:layout_marginRight="5dp"
-            android:layout_marginEnd="5dp"
+            tools:text="FOLLOWING"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"/>
+            android:layout_marginStart="5dp"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tvNumberFollowers"
+            android:layout_width="wrap_content"
+            android:textColor="@color/woodsmoke"
+            android:layout_height="wrap_content"
+            tools:text="5"/>
+
+        <TextView
+            android:id="@+id/tvFollowers"
+            android:layout_width="wrap_content"
+            android:textColor="@color/mischka"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:textSize="12sp"
+            tools:text="FOLLOWERS"/>
 
 
     </LinearLayout>
-
+-->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/llCounts"
+        android:layout_below="@+id/rlUserHeader"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:id="@+id/flContainer">
+        android:id="@+id/flContainer"
+        android:background="@color/white">
 
     </FrameLayout>
 

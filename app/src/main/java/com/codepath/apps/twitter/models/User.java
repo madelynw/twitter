@@ -22,6 +22,7 @@ public class User implements Parcelable {
     private int friendsCount;
     private int followersCount;
     private String tagline;
+    private String backgroundImageUrl;
 
     public String getName() {
         return name;
@@ -51,6 +52,8 @@ public class User implements Parcelable {
         return tagline;
     }
 
+    public String getBackgroundImageUrl() { return backgroundImageUrl; }
+
     // deserialize the user json -> User
     public static User fromJSON(JSONObject json) {
         User u = new User();
@@ -63,11 +66,15 @@ public class User implements Parcelable {
             u.followersCount = json.getInt("followers_count");
             u.friendsCount = json.getInt("friends_count");
             u.tagline = json.getString("description");
+            u.backgroundImageUrl = json.getString("profile_background_image_url");
         } catch (JSONException e) {
             e.printStackTrace();
         }
         // Return a user
         return u;
+    }
+
+    public User() {
     }
 
     @Override
@@ -84,9 +91,7 @@ public class User implements Parcelable {
         dest.writeInt(this.friendsCount);
         dest.writeInt(this.followersCount);
         dest.writeString(this.tagline);
-    }
-
-    public User() {
+        dest.writeString(this.backgroundImageUrl);
     }
 
     protected User(Parcel in) {
@@ -97,6 +102,7 @@ public class User implements Parcelable {
         this.friendsCount = in.readInt();
         this.followersCount = in.readInt();
         this.tagline = in.readString();
+        this.backgroundImageUrl = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
