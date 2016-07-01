@@ -5,10 +5,13 @@ import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -30,7 +33,9 @@ import com.codepath.apps.twitter.fragments.HomeTimelineFragment;
 import com.codepath.apps.twitter.fragments.MentionsTimelineFragment;
 import com.codepath.apps.twitter.fragments.TweetsListFragment;
 import com.codepath.apps.twitter.models.Tweet;
+import com.codepath.apps.twitter.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,14 +44,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class TimelineActivity extends AppCompatActivity {
 
     private final int REQUEST_CODE = 20;
 
     ViewPager vpPager;
-
     private SmartFragmentStatePagerAdapter adapterViewPager;
+
+    TwitterClient client;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +92,27 @@ public class TimelineActivity extends AppCompatActivity {
         tvToolbarTitle.setText(R.string.title_activity_timeline);
 
 
-        ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
+        final ImageButton btnProfile = (ImageButton) findViewById(R.id.btnProfile);
+
+        // Get profile image
+        client = TwitterApplication.getRestClient();
+        client.getMyInfo(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                user = User.fromJSON(response);
+                String imgUrl = user.getProfileImageUrl();
+                Picasso.with(getApplicationContext()).load(imgUrl)
+                        .transform(new RoundedCornersTransformation(30, 30))
+                        //.fit().centerCrop()
+                        .resize(160, 0)
+                        .into(btnProfile);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.d("DEBUG", errorResponse.toString());
+            }
+        });
 
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,9 +148,32 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getLayoutInflater().inflate(R.layout.custom_toolbar, null);
-        //getMenuInflater().inflate(R.menu.menu_timeline, menu);
-        return true;
+        //getLayoutInflater().inflate(R.layout.custom_toolbar, null);
+        getMenuInflater().inflate(R.menu.menu_timeline, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // perform query here
+                Intent i = new Intent(getApplicationContext(), SearchActivity.class);
+                i.putExtra("q", query);
+                startActivity(i);
+                // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
+                // see https://code.google.com/p/android/issues/detail?id=24599
+                searchView.clearFocus();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -133,7 +184,6 @@ public class TimelineActivity extends AppCompatActivity {
     public void onProfileView(MenuItem item) {
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
-
     }
 
     // Return the order of the fragments in the view pager
@@ -183,4 +233,5 @@ public class TimelineActivity extends AppCompatActivity {
             return tabIcons[position];
         }
     }
+
 }

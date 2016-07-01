@@ -1,5 +1,6 @@
 package com.codepath.apps.twitter.activities;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,6 +65,7 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     user = User.fromJSON(response);
                     populateProfileHeader(user);
+                    getSupportActionBar().setTitle("@" + user.getScreenName());
                 }
 
                 @Override
@@ -82,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     user = User.fromJSON(response);
                     populateProfileHeader(user);
+                    getSupportActionBar().setTitle("@" + user.getScreenName());
                 }
 
                 @Override

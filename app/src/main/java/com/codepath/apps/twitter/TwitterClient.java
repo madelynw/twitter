@@ -3,6 +3,7 @@ package com.codepath.apps.twitter;
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.FlickrApi;
 import org.scribe.builder.api.TwitterApi;
+import org.scribe.model.Request;
 
 import android.content.Context;
 
@@ -83,6 +84,14 @@ public class TwitterClient extends OAuthBaseClient {
         RequestParams params = new RequestParams();
         params.put("status", status);
         getClient().post(apiUrl, params, handler);
+    }
+
+    public void searchTweets(String q, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("search/tweets.json?q=query");
+        RequestParams params = new RequestParams();
+        params.put("q", q);
+        params.put("count", 25);
+        getClient().get(apiUrl, params, handler);
     }
 
     // Compose tweet

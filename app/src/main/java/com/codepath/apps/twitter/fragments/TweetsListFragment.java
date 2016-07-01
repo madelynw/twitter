@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +13,21 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.codepath.apps.twitter.R;
+import com.codepath.apps.twitter.TwitterApplication;
+import com.codepath.apps.twitter.TwitterClient;
 import com.codepath.apps.twitter.activities.ComposeActivity;
 import com.codepath.apps.twitter.activities.TimelineActivity;
 import com.codepath.apps.twitter.adapters.TweetsArrayAdapter;
 import com.codepath.apps.twitter.models.Tweet;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by madelynw on 6/28/16.
@@ -27,6 +37,8 @@ public class TweetsListFragment extends Fragment {
     private TweetsArrayAdapter adapter;
     private ArrayList<Tweet> tweets;
     private ListView lvTweets;
+    //private SwipeRefreshLayout swipeContainer;
+    //private TwitterClient client;
 
     // inflation logic
 
@@ -41,7 +53,6 @@ public class TweetsListFragment extends Fragment {
         return v;
     }
 
-
     // creation life cycle
 
     @Override
@@ -51,6 +62,29 @@ public class TweetsListFragment extends Fragment {
         tweets = new ArrayList<>();
         // Construct the adapter from data source
         adapter = new TweetsArrayAdapter(getActivity(), tweets);
+
+        /**
+        client = TwitterApplication.getRestClient();
+
+        swipeContainer = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipeContainer);
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                update();
+            }
+        });
+
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+         */
     }
 
     public void addAll(List<Tweet> tweets) {
@@ -63,5 +97,24 @@ public class TweetsListFragment extends Fragment {
         adapter.notifyDataSetChanged();
         lvTweets.setSelection(0);
     }
+
+    /**
+    public void update() {
+        client.getHomeTimeline(new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
+                // Remember to CLEAR OUT old items before appending in the new ones
+                adapter.clear();
+                // ...the data has come back, add new items to your adapter...
+                addAll(Tweet.fromJsonArray(json));
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
+            }
+
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.d("DEBUG", errorResponse.toString());
+            }
+        });
+    }
+     */
 
 }
