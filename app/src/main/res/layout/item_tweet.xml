@@ -40,6 +40,7 @@
         android:textColorLink="@color/picton_blue"
         android:layout_below="@+id/tvName"
         android:lineSpacingExtra="5dp"
+        android:autoLink="all"
         android:textSize="15sp"/>
 
     <TextView

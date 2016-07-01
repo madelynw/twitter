@@ -82,6 +82,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
             @Override
             public void onClick(View view) {
                 ivFavorite.setImageResource(R.drawable.ic_red_favorite);
+
             }
         });
 

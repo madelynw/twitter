@@ -87,7 +87,6 @@ public class ComposeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Toast.makeText(ComposeActivity.this, "not working", Toast.LENGTH_SHORT).show();
                 Log.d("DEBUG", errorResponse.toString());
             }
         });
