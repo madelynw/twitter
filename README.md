@@ -45,10 +45,11 @@ The following **additional** features are implemented:
 
 * [ ] User can view more tweets as they scroll with [infinite pagination](http://guides.codepath.com/android/Endless-Scrolling-with-AdapterViews-and-RecyclerView). Number of tweets is unlimited.
 
-## Video Walkthrough
+## Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
+<img src='http://i.imgur.com/r93oX0o.png' title='Login Screen' width='' alt='Login Screen' />
 <img src='http://i.imgur.com/TlvccuK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
