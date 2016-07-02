@@ -1,6 +1,7 @@
 package com.codepath.apps.twitter.fragments;
 
 import android.content.Intent;
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import com.codepath.apps.twitter.R;
 import com.codepath.apps.twitter.TwitterApplication;
 import com.codepath.apps.twitter.TwitterClient;
 import com.codepath.apps.twitter.activities.ComposeActivity;
+import com.codepath.apps.twitter.activities.DetailsActivity;
 import com.codepath.apps.twitter.activities.TimelineActivity;
 import com.codepath.apps.twitter.adapters.TweetsArrayAdapter;
 import com.codepath.apps.twitter.models.Tweet;
@@ -51,6 +54,7 @@ public class TweetsListFragment extends Fragment {
         lvTweets = (ListView) v.findViewById(R.id.lvTweets);
         // Connect adapter to ListView
         lvTweets.setAdapter(adapter);
+        setupListener();
         return v;
     }
 
@@ -63,7 +67,6 @@ public class TweetsListFragment extends Fragment {
         tweets = new ArrayList<>();
         // Construct the adapter from data source
         adapter = new TweetsArrayAdapter(getActivity(), tweets);
-
 
         /**
         client = TwitterApplication.getRestClient();
@@ -118,5 +121,23 @@ public class TweetsListFragment extends Fragment {
         });
     }
      */
+
+    private void setupListener() {
+        // Sets up listener so that when the user clicks on a movie, the
+        // details page appears
+
+        lvTweets.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapter,
+                                            View item, int pos, long id) {
+                        Intent i = new Intent(getContext(), DetailsActivity.class);
+                        i.putExtra("Position", pos);
+                        Tweet tweet = tweets.get(pos);
+                        i.putExtra("Tweet", tweet);
+                        startActivity(i);
+                    }
+                });
+    }
 
 }
